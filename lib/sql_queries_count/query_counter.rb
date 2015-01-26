@@ -19,7 +19,9 @@ module SqlQueriesCount
     end
 
     def sql(event)
-      self.class.counter += 1
+      unless event.payload[:name] == "CACHE"
+        self.class.counter += 1
+      end
     end
   end
 
